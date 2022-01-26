@@ -18,6 +18,9 @@ function App() {
     <Router>
       <AuthProvider>
         <Switch>
+  
+          {/*Pagina inicial do projeto */}
+          <Route path="/landing" component={Landing} />
 
           {/* Drive */}
           <PrivateRoute exact path="/" component={Dashboard} />
@@ -39,10 +42,7 @@ function App() {
 
           {/* ADD  glossary */}
           <PrivateRoute path="/glossario" component={Glossary} />
-          
-          {/*Pagina inicial do projeto */}
-          <Route path="/landing" component={Landing} />
-
+        
           <Redirect to="/landing" />
 
         </Switch>
