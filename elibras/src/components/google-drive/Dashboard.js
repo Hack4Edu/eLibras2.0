@@ -10,7 +10,7 @@ import Navbar from "./Navbar";
 import FolderBreadcrumbs from "./FolderBreadcrumbs";
 import { useParams, useLocation, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { Form, Button, Modal} from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import firebase from "../../firebase";
 import { database } from "../../firebase";
 
@@ -95,12 +95,11 @@ export default function Dashboard() {
       });
 
     return dbGetUSer;
-  }, [relationship]);
+  }, [currentUser.uid, relationship]);
 
   React.useEffect(() => {
     //handleClose()
     if (!getUser) {
-    
     }
 
     if (getUser[0] != undefined) {
@@ -115,29 +114,23 @@ export default function Dashboard() {
   React.useEffect(() => {
     if (idactor === "1") {
       console.log("É um aluno");
-
       handleClose();
-      
-      
-      
     } else if (idactor === "2") {
       console.log("É um Interprete");
       handleClose();
-      
-      
     } else if (idactor === "3") {
       console.log("É um professor");
       handleClose();
     } else if (!idactor) {
       console.log("Sem idactor ");
       console.log(cont);
-      handleShow();
-      console.log('idactor', idactor)
+      console.log(typeof(idactor))
+      console.log('bug', (idactor))
+      handleClose();
+      console.log("idactor", idactor);
       if (cont > 0) {
         console.log("Sem idactor ");
-        
-        
-
+        handleShow();
       }
     }
     contador();
@@ -165,24 +158,16 @@ export default function Dashboard() {
   return (
     <>
       <Navbar />
-     {idactor === "3" && <h1>Professor</h1>}
-     {idactor === "1" && <h1>Aluno</h1>}
-     {idactor === "2" && <h1>Interprete</h1>}
+      {idactor === "3" && <h3>Professor</h3>}
+      {idactor === "1" && <h3>Aluno</h3>}
+      {idactor === "2" && <h3>Interprete</h3>}
       <Container fluid>
         <div className="d-flex align-items-center">
-        <FolderBreadcrumbs currentFolder={folder} />
-          {
-            idactor === "3" && <AddFileButton currentFolder={folder} />
-          }
+          <FolderBreadcrumbs currentFolder={folder} />
+          {idactor === "3" && <AddFileButton currentFolder={folder} />}
 
-          { 
-          idactor === "3" && <AddFolderButton currentFolder={folder} />
-          }
-          { 
-          idactor === "2" && <AddFileButton currentFolder={folder} />
-          }
-          
-          
+          {idactor === "3" && <AddFolderButton currentFolder={folder} />}
+          {idactor === "2" && <AddFileButton currentFolder={folder} />}
         </div>
         {childFolders.length > 0 && (
           <div className="d-flex flex-wrap">
