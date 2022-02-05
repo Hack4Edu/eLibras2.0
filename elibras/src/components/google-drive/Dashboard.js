@@ -109,6 +109,7 @@ export default function Dashboard() {
 
       set_idactor(id_actor);
     }
+    contador();
   }, [getUser]);
 
   React.useEffect(() => {
@@ -122,24 +123,28 @@ export default function Dashboard() {
       console.log("É um professor");
       handleClose();
     } else if (!idactor) {
-      console.log("Sem idactor ");
+      //console.log("Sem idactor ");
       console.log(cont);
-      console.log(typeof(idactor))
-      console.log('bug', (idactor))
+      console.log(typeof idactor);
+      //console.log("bug", idactor);
       handleClose();
-      console.log("idactor", idactor);
+      console.log("idactor", idactor); 
+         
       if (cont > 0) {
-        console.log("Sem idactor ");
         handleShow();
+        console.log("Sem idactor ");
+       
       }
+      
     }
     contador();
+    
 
     console.log(cont);
   }, [idactor]);
 
   //console.log("id_actor", idactor);
-
+  
   const createRelationship = () => {
     const db = firebase.firestore();
     db.collection("relationship").add({
