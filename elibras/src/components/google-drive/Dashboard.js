@@ -129,7 +129,7 @@ export default function Dashboard() {
       //console.log("bug", idactor);
       handleClose();
       console.log("idactor", idactor); 
-         
+     
       if (cont > 0) {
         handleShow();
         console.log("Sem idactor ");
