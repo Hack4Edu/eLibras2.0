@@ -15,23 +15,10 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const [institutions, setInstitutions] = React.useState([]);
-  React.useEffect(() => {
-    const db = firebase.firestore();
-    const dbInstitutions = db
-      .collection("Institution")
-      .onSnapshot((snapshot) => {
-        const institutionData = [];
-        snapshot.forEach((doc) =>
-          institutionData.push({ ...doc.data(), id: doc.id })
-        );
-        setInstitutions(institutionData);
-      });
+ 
+  
 
-    return dbInstitutions;
-  }, []);
 
-  console.log(institutions);
 
   async function handleSubmit(e) {
     console.log(e.preventDefault())
@@ -63,16 +50,7 @@ export default function Signup() {
           <Form onSubmit={handleSubmit}>
           
           
-          <Form.Group id="Institution">
-            <Form.Label>Instituição</Form.Label>
-             
-             <Form.Control as= "select" ref={institutionRef}>
-              {institutions.map((institution) => (
-                <option key={institution.key}>{institution.Nome}</option>
-              ))}
-             </Form.Control>            
-              
-            </Form.Group>
+          
 
 
             <Form.Group id="email">

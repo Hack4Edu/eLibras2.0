@@ -2,18 +2,18 @@ import firebase from "firebase";
 import  {Button} from "react-bootstrap";
 import React from "react";
 
-export const VideoInput = ({ video, callLoader }) => {
+export const VideoInput = ({ video,  }) => {
   const [link, setLink] = React.useState(video.link);
 
   const onUpdate = () => {
-    callLoader();
+   
     const db = firebase.firestore();
     db.collection("videos")
       .doc(video.id)
       .set({ ...video, link });
   };
   const onDelete = () => {
-    callLoader();
+  
     const db = firebase.firestore();
     db.collection("videos").doc(video.id).delete();
   };

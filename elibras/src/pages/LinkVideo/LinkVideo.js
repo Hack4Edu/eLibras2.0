@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import firebase from "../../firebase";
 import Navbar from "../../components/google-drive/Navbar";
 import { VideoInput } from "../../components/Video/VideoInput";
-import Loader from "../../components/layout/Loader/Loader";
+
 import ReactPlayer from "react-player";
 import { Row, Button, Table } from "react-bootstrap";
 import "./styles.css";
@@ -23,14 +23,14 @@ function LinkVideo() {
       setVideos(videosData);
     });
 
-    callLoader();
+    
     return unsubscribe;
   }, []);
 
   const onCreate = () => {
     const db = firebase.firestore();
     db.collection("videos").add({ link: newVideo });
-    callLoader();
+   
   };
 
   function callLoader() {
@@ -85,7 +85,7 @@ function LinkVideo() {
               </Table>
             </div>
           </div>
-          {!removeLoader && <Loader />}
+          
         </Row>
       </div>
     </>
